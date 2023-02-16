@@ -1,0 +1,33 @@
+[
+    {
+        "username": "Peter Brown",
+        "avatarStringURL": "human1",
+        "id": 1
+    },
+    {
+        "username": "Sarah Blue",
+        "avatarStringURL": "human2",
+        "id": 2
+    },
+    {
+        "username": "Sarah White",
+        "avatarStringURL": "human3",
+        "id": 3
+    },
+    {
+        "username": "Melven Sandro",
+        "avatarStringURL": "human4",
+        "id": 4
+    },
+    {
+        "username": "Peter Reds",
+        "avatarStringURL": "human5",
+        "id": 5
+    },
+    {
+        "username": "Sarah Spice",
+        "avatarStringURL": "human6",
+        "id": 6
+    }
+
+]

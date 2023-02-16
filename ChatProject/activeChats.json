@@ -1,0 +1,27 @@
+[
+    {
+        "username": "Peter Brown1",
+        "userImageString": "human1",
+        "lastMessage": "Wow!",
+        "id": 1
+    },
+    {
+        "username": "Sarah White2",
+        "userImageString": "human2",
+        "lastMessage": "Nice to meet yo!",
+        "id": 2
+    },
+    {
+        "username": "Sarah White3",
+        "userImageString": "human3",
+        "lastMessage": "Nice to meet yo!2",
+        "id": 3
+    },
+    {
+        "username": "Melven Sandro4",
+        "userImageString": "human4",
+        "lastMessage": "Zdorova",
+        "id": 4
+    }
+
+]
