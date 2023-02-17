@@ -41,6 +41,10 @@
 		06E2B236299D9D4400D553D7 /* users.json in Resources */ = {isa = PBXBuildFile; fileRef = 06E2B22F299D9B7100D553D7 /* users.json */; };
 		06E2B238299E5C4B00D553D7 /* UserCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E2B237299E5C4B00D553D7 /* UserCell.swift */; };
 		06E2B23A299E619200D553D7 /* UIViewController + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E2B239299E619200D553D7 /* UIViewController + Extension.swift */; };
+		06E2B23C299EBFB400D553D7 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E2B23B299EBFB400D553D7 /* ProfileViewController.swift */; };
+		06E2B23E299EC5D000D553D7 /* InsertableTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E2B23D299EC5CF00D553D7 /* InsertableTextField.swift */; };
+		06E2B240299ECC9100D553D7 /* UIView + Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E2B23F299ECC9100D553D7 /* UIView + Extension.swift */; };
+		06E2B242299FC16D00D553D7 /* ChatRequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06E2B241299FC16D00D553D7 /* ChatRequestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +84,10 @@
 		06E2B232299D9C4D00D553D7 /* MChat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MChat.swift; sourceTree = "<group>"; };
 		06E2B237299E5C4B00D553D7 /* UserCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCell.swift; sourceTree = "<group>"; };
 		06E2B239299E619200D553D7 /* UIViewController + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Extension.swift"; sourceTree = "<group>"; };
+		06E2B23B299EBFB400D553D7 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		06E2B23D299EC5CF00D553D7 /* InsertableTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertableTextField.swift; sourceTree = "<group>"; };
+		06E2B23F299ECC9100D553D7 /* UIView + Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView + Extension.swift"; sourceTree = "<group>"; };
+		06E2B241299FC16D00D553D7 /* ChatRequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatRequestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +143,7 @@
 				063EF35C299AB0D4000B6C9E /* UIImageView + Extension.swift */,
 				063EF35A299AB044000B6C9E /* Label + Extension.swift */,
 				063EF358299AADE5000B6C9E /* UIColor + Extension.swift */,
+				06E2B23F299ECC9100D553D7 /* UIView + Extension.swift */,
 				063EF356299AAD5E000B6C9E /* UIFont + Extension.swift */,
 				063EF354299AAB7F000B6C9E /* UIButton + Extension.swift */,
 				063EF362299AB9CA000B6C9E /* StackView + extension.swift */,
@@ -147,6 +156,7 @@
 		063EF35F299AB27C000B6C9E /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				06E2B23D299EC5CF00D553D7 /* InsertableTextField.swift */,
 				063EF36C299B0B96000B6C9E /* AddPhotoView.swift */,
 				063EF360299AB37B000B6C9E /* ButtonFormView.swift */,
 				063EF366299AF705000B6C9E /* OneLineTextField.swift */,
@@ -174,6 +184,8 @@
 				06E2B20F299BD25E00D553D7 /* MainTabBarController.swift */,
 				06E2B213299BD2E500D553D7 /* ListViewController.swift */,
 				06E2B211299BD27600D553D7 /* PeopleViewController.swift */,
+				06E2B23B299EBFB400D553D7 /* ProfileViewController.swift */,
+				06E2B241299FC16D00D553D7 /* ChatRequestViewController.swift */,
 				06E2B223299D1E4500D553D7 /* Cell */,
 				06E2B235299D9CCA00D553D7 /* Header */,
 			);
@@ -298,14 +310,18 @@
 				06E2B231299D9C4100D553D7 /* MUser.swift in Sources */,
 				06E2B225299D1E5400D553D7 /* ActiveChatCell.swift in Sources */,
 				063EF36B299B0878000B6C9E /* SetupProfileViewController.swift in Sources */,
+				06E2B23E299EC5D000D553D7 /* InsertableTextField.swift in Sources */,
 				06E2B212299BD27600D553D7 /* PeopleViewController.swift in Sources */,
 				063EF35B299AB044000B6C9E /* Label + Extension.swift in Sources */,
+				06E2B23C299EBFB400D553D7 /* ProfileViewController.swift in Sources */,
 				06E2B218299D0DB100D553D7 /* Bundle-Decodable.swift in Sources */,
+				06E2B242299FC16D00D553D7 /* ChatRequestViewController.swift in Sources */,
 				063EF361299AB37B000B6C9E /* ButtonFormView.swift in Sources */,
 				06E2B214299BD2E500D553D7 /* ListViewController.swift in Sources */,
 				063EF36D299B0B96000B6C9E /* AddPhotoView.swift in Sources */,
 				063EF341299AA5FF000B6C9E /* AppDelegate.swift in Sources */,
 				063EF35D299AB0D4000B6C9E /* UIImageView + Extension.swift in Sources */,
+				06E2B240299ECC9100D553D7 /* UIView + Extension.swift in Sources */,
 				063EF36F299B12AE000B6C9E /* SegmentedControl + extension.swift in Sources */,
 				06E2B22B299D372000D553D7 /* SelfConfigurationCell.swift in Sources */,
 				06E2B238299E5C4B00D553D7 /* UserCell.swift in Sources */,
