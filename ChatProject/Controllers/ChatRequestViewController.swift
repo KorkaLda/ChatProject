@@ -13,8 +13,8 @@ class ChatRequestViewController: UIViewController {
     let imageView = UIImageView(image: #imageLiteral(resourceName: "human5"), contentMode: .scaleAspectFill)
     let nameLabel = UILabel(text: "Tyler Durden", font: .systemFont(ofSize: 26, weight: .light))
     let aboutMeLabel = UILabel(text: "Почему все вокруг путают нас с тобой? 😵", font: .systemFont(ofSize: 16, weight: .light))
-    let acceptButton = UIButton(title: "ACCEPT", titleColor: .white, backgroundColor: .black, font: .laoSangamMN20(), isShadow: false, cornerRadius: 10)
-    let denyButton = UIButton(title: "DENY", titleColor: #colorLiteral(red: 0.8756850362, green: 0.2895075083, blue: 0.2576965988, alpha: 1), backgroundColor: .white, font: .laoSangamMN20(), cornerRadius: 10)
+    let acceptButton = UIButton(title: "ACCEPT", titleColor: .white, backgroundColor: .black, font: .laoSangamMN20(), isShadow: false, cornerRadius: 20)
+    let denyButton = UIButton(title: "DENY", titleColor: #colorLiteral(red: 0.8756850362, green: 0.2895075083, blue: 0.2576965988, alpha: 1), backgroundColor: .white, font: .laoSangamMN20(), cornerRadius: 20)
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +36,7 @@ class ChatRequestViewController: UIViewController {
     }
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        acceptButton.applyGradients(cornerRadius: 10)
+        acceptButton.applyGradients(cornerRadius: 20)
     }
 }
 
@@ -53,6 +53,7 @@ extension ChatRequestViewController {
         let buttonstackView = UIStackView(arrangedSubviews: [acceptButton, denyButton], axis: .horizontal, spacing: 7)
         buttonstackView.translatesAutoresizingMaskIntoConstraints = false
         buttonstackView.distribution = .fillEqually
+        buttonstackView.spacing = 20
         containerView.addSubview(buttonstackView)
         
         NSLayoutConstraint.activate([
