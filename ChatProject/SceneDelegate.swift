@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let viewController = ChatRequestViewController()
 //        let navController = UINavigationController(rootViewController: viewController)
-        window.rootViewController = viewController//navController
+        window.rootViewController = AuthViewController()//viewController//navController
         self.window = window
         window.makeKeyAndVisible()
     }

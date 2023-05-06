@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>372419698064-v4k8tocrhh3o4u011nrl2n6u9b3up1re.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.372419698064-v4k8tocrhh3o4u011nrl2n6u9b3up1re</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAvmHmfugWIzqdtOQ2HPuaW3LgB23CjWZM</string>
+	<key>GCM_SENDER_ID</key>
+	<string>372419698064</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>mallwalkers.ChatProject</string>
+	<key>PROJECT_ID</key>
+	<string>ichat-226a2</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ichat-226a2.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:372419698064:ios:11fe0f46b7180fc227e715</string>
+</dict>
+</plist>

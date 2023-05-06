@@ -32,8 +32,23 @@ class SignUpViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .white
-        
         setupConstraints()
+        
+        signUpButton.addTarget(self, action: #selector(signUpButtonTapped), for: .touchUpInside)
+    }
+    @objc private func signUpButtonTapped() {
+        print(#function)
+        AuthService.shared.register(email: emailTextField.text,
+                                    password: passwordTextField.text,
+                                    confirmPassword: confirmPasswordTextField.text) { (result) in
+            switch result {
+            case .success(let user):
+                self.showAlert(with: "Успешно", and: "Вы зарегистрированы")
+                print(user.email)
+            case .failure(let error):
+                self.showAlert(with: "Ошибка", and: error.localizedDescription)
+            }
+        }
     }
 }
 //MARK: - Setup Constraints
@@ -61,8 +76,8 @@ extension SignUpViewController {
         view.addSubview(bottomStackView)
         
         NSLayoutConstraint.activate([
-        welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
-        welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            welcomeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 160),
+            welcomeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
         NSLayoutConstraint.activate([
@@ -74,8 +89,8 @@ extension SignUpViewController {
         NSLayoutConstraint.activate([
             bottomStackView.topAnchor.constraint(equalTo: stackView.bottomAnchor, constant: 20),
             bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-//            bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
-//            bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
+            //            bottomStackView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 50),
+            //            bottomStackView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -50)
         ])
     }
 }
@@ -98,5 +113,14 @@ struct SignUpVCProvider: PreviewProvider {
         func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
             
         }
+    }
+}
+
+extension UIViewController {
+    func showAlert(with title:String, and message:String) {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let okAction = UIAlertAction(title: "OK", style: .default)
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
     }
 }
