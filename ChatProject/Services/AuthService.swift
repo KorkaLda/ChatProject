@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 import FirebaseAuth
+import GoogleSignIn
 
 class AuthService {
     static let shared = AuthService()
@@ -25,6 +26,13 @@ class AuthService {
                 return
             }
             completion(.success(result.user))
+        }
+    }
+    
+    func googleLogin(user: GIDGoogleUser!, error: Error!, completion: @escaping (Result <User, Error>) -> Void) {
+        if let error = error {
+            completion(.failure(error))
+            return
         }
     }
     

@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import GoogleSignIn
+import Firebase
 
 class AuthViewController: UIViewController {
     
@@ -30,6 +32,11 @@ class AuthViewController: UIViewController {
         
         emailButton.addTarget(self, action: #selector(emailButtonTapped), for: .touchUpInside)
         loginButton.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        googleButton.addTarget(self, action: #selector(setupGoogle), for: .touchUpInside)
+        
+        signUpVC.delegate = self
+        loginVC.delegate = self
+//        GIDSignIn.sharedInstance()?.delegate = self
     }
     
     @objc private func emailButtonTapped() {
@@ -81,6 +88,67 @@ extension AuthViewController {
 
     }
 }
+
+extension AuthViewController: AuthNavigationDelegate {
+    func toLoginVC() {
+        present(loginVC, animated: true)
+    }
+    
+    func toSignUpVC() {
+        present(signUpVC, animated: true)
+    }
+    
+    
+}
+
+extension AuthViewController {
+    
+    @objc func setupGoogle() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        let scenes = UIApplication.shared.connectedScenes
+        let windowScenes = scenes.first as? UIWindowScene
+        let window = windowScenes?.windows.first
+        guard let rootViewController = window?.rootViewController else { return }
+
+        GIDSignIn.sharedInstance.signIn(withPresenting: rootViewController) { result, error in
+            if let error = error {
+                self.showAlert(with: "Error", and: error.localizedDescription)
+                return
+            }
+            
+            guard let user = result?.user,
+                  let idToken = user.idToken?.tokenString
+            else {
+                return
+            }
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: user.accessToken.tokenString)
+            Auth.auth().signIn(with: credential) { result, error in
+                switch result {
+                    
+                case .none:
+                    
+                    let mainTabBar = MainTabBarController()
+                    mainTabBar.modalPresentationStyle = .fullScreen
+                    self.present(SetupProfileViewController(currentUser: result!.user), animated: true)
+                    
+                case .some(_):
+                    let mainTabBar = MainTabBarController()
+                    mainTabBar.modalPresentationStyle = .fullScreen
+                    let muser = MUser(username: result!.user.displayName!, email: result!.user.email!, avatarStringURL: result!.user.photoURL?.absoluteString ?? "nil", description: result!.user.description, sex: "Nil", id: result!.user.uid)
+                    self.present(MainTabBarController(currentUser: muser), animated: true)
+                    
+                }
+            }
+//            guard result != nil else {
+//                self.showAlert(with: "Ошибка", and: error?.localizedDescription ?? "")
+//                return
+//            }
+        }}
+}
+
 
 //MARK: - SwiftUI Preview
 import SwiftUI

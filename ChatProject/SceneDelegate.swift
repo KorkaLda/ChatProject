@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -13,17 +14,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
-        // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
-        // If using a storyboard, the `window` property will automatically be initialized and attached to the scene.
-        // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
+
         guard let windowScene = (scene as? UIWindowScene) else { return }
-        let window = UIWindow(windowScene: windowScene)
+        window = UIWindow(frame: windowScene.coordinateSpace.bounds)
+        window?.windowScene = windowScene
         
-        let viewController = ChatRequestViewController()
+//        let viewController = ChatRequestViewController()
 //        let navController = UINavigationController(rootViewController: viewController)
-        window.rootViewController = AuthViewController()//viewController//navController
-        self.window = window
-        window.makeKeyAndVisible()
+        //viewController//navController
+//        self.window = window
+        
+        
+        if let user = Auth.auth().currentUser {
+            FirestoreService.shared.getUserData(user: user) { (result) in
+                switch result {
+                case .success(let muser):
+                    let mainTabBar = MainTabBarController(currentUser: muser)
+                    mainTabBar.modalPresentationStyle = .fullScreen
+                    self.window?.rootViewController = mainTabBar
+                case .failure(let error):
+                    print("FAILURE")
+                    self.window?.rootViewController = AuthViewController()
+                }
+            }
+        } else {
+            print("FAILURE2")
+            window?.rootViewController = AuthViewController()
+        }
+//        window?.rootViewController = MainTabBarController()
+        window?.makeKeyAndVisible()
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
