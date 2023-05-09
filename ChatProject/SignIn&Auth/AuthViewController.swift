@@ -130,15 +130,14 @@ extension AuthViewController {
                     
                 case .none:
                     
-                    let mainTabBar = MainTabBarController()
+                    let mainTabBar = SetupProfileViewController(currentUser: result!.user)
                     mainTabBar.modalPresentationStyle = .fullScreen
-                    self.present(SetupProfileViewController(currentUser: result!.user), animated: true)
-                    
+                    self.present(mainTabBar, animated: true)
                 case .some(_):
-                    let mainTabBar = MainTabBarController()
-                    mainTabBar.modalPresentationStyle = .fullScreen
                     let muser = MUser(username: result!.user.displayName!, email: result!.user.email!, avatarStringURL: result!.user.photoURL?.absoluteString ?? "nil", description: result!.user.description, sex: "Nil", id: result!.user.uid)
-                    self.present(MainTabBarController(currentUser: muser), animated: true)
+                    let mainTabBar = MainTabBarController(currentUser: muser)
+                    mainTabBar.modalPresentationStyle = .fullScreen
+                    self.present(mainTabBar, animated: true)
                     
                 }
             }

@@ -70,19 +70,17 @@ class LoginViewController: UIViewController {
             let credential = GoogleAuthProvider.credential(withIDToken: idToken,
                                                            accessToken: user.accessToken.tokenString)
             Auth.auth().signIn(with: credential) { result, error in
-                switch result {
-                    
-                case .none:
-                    
-                    let mainTabBar = MainTabBarController()
+                if result?.user.photoURL?.absoluteString != "" {
+                    //                case .none:
+                    let mainTabBar = SetupProfileViewController(currentUser: result!.user)
                     mainTabBar.modalPresentationStyle = .fullScreen
-                    self.present(SetupProfileViewController(currentUser: result!.user), animated: true)
-                    
-                case .some(_):
-                    let mainTabBar = MainTabBarController()
-                    mainTabBar.modalPresentationStyle = .fullScreen
+                    self.present(mainTabBar, animated: true)
+                } else {
+//                case .some(_):
                     let muser = MUser(username: result!.user.displayName!, email: result!.user.email!, avatarStringURL: result!.user.photoURL?.absoluteString ?? "nil", description: result!.user.description, sex: "Nil", id: result!.user.uid)
-                    self.present(MainTabBarController(currentUser: muser), animated: true)
+                    let mainTabBar = MainTabBarController(currentUser: muser)
+                    mainTabBar.modalPresentationStyle = .fullScreen
+                    self.present(mainTabBar, animated: true)
                     
                 }
             }

@@ -15,6 +15,20 @@ class ProfileViewController: UIViewController {
     let aboutMeLabel = UILabel(text: "You have the opportynity to chat with the best man in the world!", font: .systemFont(ofSize: 16, weight: .light))
     let myTextField = InsertableTextField()
     
+    private let user: MUser
+    
+    init(user: MUser) {
+        self.user = user
+        self.nameLabel.text = user.username
+        self.aboutMeLabel.text = user.description
+        self.imageView.sd_setImage(with: URL(string: user.avatarStringURL))
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -40,7 +54,19 @@ class ProfileViewController: UIViewController {
     }
     
     @objc private func sendMessage() {
-        print(#function)
+        guard let message = myTextField.text, message != "" else { return }
+        FirestoreService.shared.createWaitingChat(message: message, receiver: user) { result in
+            switch result {
+                
+            case .success():
+                self.showAlert(with: "Ваше сообщене отправлено", and: "Ваше сообщение для \(self.user.username) было отправлено")
+            case .failure(let error):
+                self.showAlert(with: "Error", and: error.localizedDescription)
+            }
+        }
+        self.dismiss(animated: true) {
+            
+        }
     }
 }
 
@@ -87,25 +113,3 @@ extension ProfileViewController {
         ])
     }
 }
-
-//MARK: - SwiftUI Preview
-import SwiftUI
-
-struct ProfileVCProvider: PreviewProvider {
-    static var previews: some View {
-        ContainerView().edgesIgnoringSafeArea(.all)
-    }
-    
-    struct ContainerView: UIViewControllerRepresentable {
-        
-        let viewController = ProfileViewController()
-        
-        func makeUIViewController(context: Context) -> some UIViewController {
-            return viewController
-        }
-        func updateUIViewController(_ uiViewController: UIViewControllerType, context: Context) {
-            
-        }
-    }
-}
-
